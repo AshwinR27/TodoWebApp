@@ -28,7 +28,7 @@ const TodoItem = ({ todo, handleEditTodo, handleDelete, selectedTodos, setSelect
         <input
           type="checkbox"
           checked={isChecked}
-          onChange={() => handleSelect(todo._id)}
+          onChange={handleSelect}
           id={`todo-checkbox-${todo._id}`}
         />
       </div>
