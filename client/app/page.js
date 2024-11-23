@@ -113,7 +113,7 @@ const Home = () => {
         _id: todo._id,
         title: todo.title,
         description: todo.description || "",
-        dueDate: todo.dueDate,
+        dueDate: todo.dueDate ,
         status: todo.status,
         assignee: todo.assignee || "",
       });
