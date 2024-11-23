@@ -1,9 +1,9 @@
 const express = require("express")
 const dotenv = require("dotenv")
 const cors = require("cors")
-const bodyParser = require("body-parser")
 const connectDb = require("./config/db")
 const todoRoutes = require("./routes/todoRoutes")
+const authRoutes = require("./routes/authRoutes")
 
 // Load env varilables
 dotenv.config();
@@ -15,8 +15,9 @@ connectDb();
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 app.use("/api/todos", todoRoutes);
+app.use('/api/users', authRoutes);
 
 // Start the server
 app.listen(port, () => {

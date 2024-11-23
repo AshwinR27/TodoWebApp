@@ -4,7 +4,7 @@ const Todo = require("../models/Todo")
 // @route GET /api/todos
 // @desc Get all TODO items
 const getAllTodos = asyncHandler(async (req, res) => {
-    const todos = await Todo.find().sort({ dueDate: 1 });
+    const todos = await Todo.find({ user_id: req.user.id }).sort({ dueDate: 1 });
     res.json(todos);
 })
 
@@ -12,13 +12,14 @@ const getAllTodos = asyncHandler(async (req, res) => {
 // @desc Create a new Todo
 const createTodo = asyncHandler(async (req, res) => {
     const { title, description, dueDate, status, assignee } = req.body;
-    
+
     const newTodo = new Todo({
         title,
         description,
         dueDate,
         status,
-        assignee
+        assignee,
+        user_id: req.user.id
     });
 
     const savedTodo = await newTodo.save();
@@ -28,6 +29,7 @@ const createTodo = asyncHandler(async (req, res) => {
 // @route PUT /api/todos/:id
 // @desc Update a Todo item
 const updateTodo = asyncHandler(async (req, res) => {
+
     const updatedTodo = await Todo.findByIdAndUpdate(
         req.params.id,
         req.body,

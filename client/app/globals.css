@@ -1,9 +1,41 @@
+:root {
+  --color-background-dark: #fafafa;
+  --color-background-light: #f4f4f4;
+  --color-text-light: #110020;
+  --color-primary: #877ff9;
+  --color-secondary: #cdcafc;
+  --color-accent: #ebebeb;
+  --color-highlight: #f4f4f4;
+  --color-button-hover: #877ff9;
+  --color-filter-background: #cdcafc;
+  --color-button-focus: var(--color-primary);
+  --color-input-focus: var(--color-secondary);
+  --color-checkbox-accent: #877ff9;
+  --color-card-background: var(--color-accent);
+  --color-card-border: #ddd;
+  --color-card-hover: #877ff9;
+  --color-dialog-background: var(--color-background-dark);
+  --color-dialog-button: #cdcafc;
+  --color-dialog-button-hover: #877ff9;
+  --color-delete-button: #eb2b3f;
+  --color-delete-button-hover: #dc1327;
+  --color-delete-button-disabled: #ccc;
+  --color-auth-background: #f4f4f4;
+  --color-auth-form-background: #fafafa;
+  --color-auth-text: #110020;
+  --color-auth-input-border: #ccc;
+  --color-auth-button: #cdcafc;
+  --color-auth-button-hover: #877ff9;
+  --color-auth-toggle-text: #110020;
+  --color-auth-toggle-button: var(--color-auth-button);
+}
+
 
 body {
   margin: 0;
   font-family: var(--font-pizzolla), sans-serif;
-  background: radial-gradient(circle, #1a013f, #10002b);
-  color: #ffffff;
+  background: radial-gradient(circle, var(--color-background-dark), var(--color-background-light));
+  color: var(--color-text-light);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,14 +44,13 @@ body {
 h1 {
   font-size: 3rem;
   font-weight: bold;
-  color: #ff9e00;
+  color: var(--color-primary);
   margin-bottom: 20px;
   text-align: center;
 }
 
 .form-container {
-
-  background: #240046;
+  background: var(--color-highlight);
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
@@ -27,104 +58,104 @@ h1 {
   margin: 20px;
   display: flex;
   flex-direction: column;
-  
   gap: 15px;
 }
 
-.form-container  input,
-.form-container  textarea,
-.form-container  select {
-  background: #3c096c;
-  border: 2px solid #ff006e;
+.form-container input,
+.form-container textarea,
+.form-container select {
+  background: var(--color-accent);
+  border: 2px solid var(--color-secondary);
   border-radius: 5px;
   padding: 10px;
   font-size: 1rem;
-  color: #ffffff;
 
   box-sizing: border-box;
   transition: border-color 0.3s ease;
 }
 
-.form-container  input[type="date"] {
+.form-container input[type="date"] {
   appearance: none;
   padding: 10px;
-  color: #ffffff;
+  color: gray;
   font-size: 1rem;
+
 }
 
-.form-container  input[type="date"]::-webkit-calendar-picker-indicator {
+.form-container input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
   cursor: pointer;
+  color-scheme: dark;
 }
 
-.form-container  input:focus,
-.form-container  textarea:focus,
-.form-container  select:focus {
-  border-color: #ff9e00;
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+  border-color: var(--color-button-focus);
   outline: none;
 }
 
-
-main.form-container  button {
-  background: #ff006e;
+.form-container button {
+  background: var(--color-secondary);
   border: none;
   padding: 10px;
   border-radius: 5px;
-  color: #ffffff;
+  color: var(--color-text-light);
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.form-container  button:hover {
-  background: #d00057;
+.form-container button:hover {
+  background: var(--color-button-hover);
+  color: white;
 }
-
 
 .filters-container {
   margin: 20px 20px 0 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
-.filters-container select, .filters-container button {
+.filters-container select,
+.filters-container button {
   width: 200px;
+  min-height: 50px;
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background: #3c096c;
-  color: #ffffff;
+  background: var(--color-filter-background);
+  color: var(--color-text-light);
   font-weight: bold;
   cursor: pointer;
 }
 
 .filters-container select {
-  border: 2px solid #ff006e;
+  border: 2px solid var(--color-secondary);
   transition: border-color 0.3s ease;
 }
 
 .filters-container select:focus {
-  border-color: #ff9e00;
+  border-color: var(--color-button-focus);
 }
 
 .filters-container button:hover {
-  background: #7209b7;
+  background: var(--color-button-hover);
+  color: white;
 }
 
-
 .todo-list {
-  max-width: 900px;
+
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-width: 90rem;
+  max-width: 100rem;
   padding: 20px;
   cursor: pointer;
 }
-
 
 .todo-card {
   max-width: 90rem;
@@ -132,15 +163,18 @@ main.form-container  button {
   align-items: center;
   padding: 15px;
   margin-bottom: 10px;
-  background: #3c096c;
-  color: #ffffff;
-  border: 2px solid #ddd;
+  background: var(--color-card-background);
+  color: var(--color-text-light);
+  border: 2px solid var(--color-card-border);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
   transition: border-color 0.3s ease;
 }
 
+.todo-card.selected {
+  border-color: var(--color-card-hover);
+}
 
 .checkbox-container {
   display: flex;
@@ -150,48 +184,37 @@ main.form-container  button {
 
 .checkbox-container input[type="checkbox"] {
   margin-right: 10px;
-  accent-color: #007bff; 
+  accent-color: var(--color-checkbox-accent);
   width: 18px;
   height: 18px;
-  cursor: pointer;
-}
-
-.todo-card.selected {
-  border-color: #4CAF50;
-}
-
-.checkbox-label {
   cursor: pointer;
 }
 
 .todo-info {
   flex-grow: 1;
   padding: 0 10px;
-  word-wrap: break-word;   
-  word-break: break-word;  
-  white-space: normal;     
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
   line-height: 1.5;
 }
 
 .todo-title {
   font-size: 20px;
   font-weight: bold;
-  word-wrap: break-word;   
-  word-break: break-word;  
-  white-space: normal;     
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
   line-height: 1.5;
-
 }
 
 .todo-status {
   font-size: 16px;
-  
   margin-left: 10px;
 }
 
 .todo-due-date {
   font-size: 14px;
-
   margin-left: 10px;
 }
 
@@ -204,7 +227,6 @@ main.form-container  button {
   font-size: 14px;
   margin-top: 5px;
 }
-
 
 .todo-actions {
   display: flex;
@@ -222,12 +244,14 @@ main.form-container  button {
 }
 
 .edit-btn {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--color-dialog-button);
+  color: var(--color-text-light);
+
 }
 
 .edit-btn:hover {
-  background-color: #0056b3;
+  background-color: var(--color-dialog-button-hover);
+  color: white;
 }
 
 .confirmation-dialog {
@@ -241,12 +265,11 @@ main.form-container  button {
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
   z-index: 9999;
-  
 }
 
 .dialog-content {
   border: black 2px solid;
-  background: #1a013f;
+  background: var(--color-dialog-background);
   padding: 20px;
   border-radius: 8px;
   text-align: center;
@@ -255,17 +278,18 @@ main.form-container  button {
 .dialog-content button {
   padding: 8px 15px;
   margin: 5px;
-  background-color: #007BFF;
-  color: white;
+  background-color: var(--color-dialog-button);
+  color: var(--color-text-light);
   border: none;
   border-radius: 4px;
 }
 
 .dialog-content button:hover {
-  background-color: #0056b3;
+  background-color: var(--color-dialog-button-hover);
+  cursor: pointer;
 }
 
-.delete-multiple-btn{
+.delete-multiple-btn {
   margin: 20px 20px 0 20px;
   padding: 8px 12px;
   border: none;
@@ -273,13 +297,13 @@ main.form-container  button {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
-  background-color: #dc3545;
+  background-color: var(--color-delete-button);
   color: white;
   font-weight: bold;
 }
 
 .delete-multiple-btn:hover {
-  background-color: #c82333;
+  background-color: var(--color-delete-button-hover);
 }
 
 .delete-multiple-btn:disabled {
@@ -291,7 +315,118 @@ main.form-container  button {
 
 .gray-line {
   margin: 50px 30px;
-  height: 1px;           
-  background-color: #ccc;      
+  height: 1px;
+  background-color: var(--color-delete-button-disabled);
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--color-auth-background);
+}
+
+.auth-form {
+  background-color: var(--color-auth-form-background);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-form h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--color-auth-text);
+}
+
+.auth-form span{
+  color: var(--color-auth-button-hover);
+}
+
+.auth-input {
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid var(--color-auth-input-border);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: var(--color-accent);
+  color: var(--color-auth-text);
+}
+
+.auth-input:focus {
+  border-color: var(--color-auth-button);
+  outline: none;
+}
+
+.auth-button {
+  padding: 12px;
+  background-color: var(--color-auth-button);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-button:hover {
+  background-color: var(--color-auth-button-hover);
+}
+
+.auth-toggle-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--color-auth-toggle-text);
+}
+
+.auth-toggle-button {
+  background: none;
+  border: none;
+  color: var(--color-auth-button);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.auth-toggle-button:hover {
+  color: var(--color-auth-button-hover);
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  box-shadow: 1px 1px 20px 0 gray;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
 
 }
+
+h1 {
+  margin: 0;
+  flex-grow: 1; 
+  text-align: center;
+}
+
+header > button {
+  margin-left: auto;
+  margin-right: 20px;
+  padding: 8px 12px;
+  border: none;
+  align-self: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  background-color: var(--color-delete-button);
+  color: white;
+  font-weight: bold;
+}
+

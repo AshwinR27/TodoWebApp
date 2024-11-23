@@ -2,8 +2,9 @@
 
 const TodoForm = ({ newTodo, setNewTodo, handleSaveTodo, isEditing }) => {
     return (
-        <main className="form-container">
+        <form className="form-container" onSubmit={handleSaveTodo}>
             <input
+                autoComplete="off"
                 id="title-el"
                 type="text"
                 placeholder="Title"
@@ -12,6 +13,7 @@ const TodoForm = ({ newTodo, setNewTodo, handleSaveTodo, isEditing }) => {
                 required
             />
             <textarea
+                autoComplete="off"
                 placeholder="Description (optional)"
                 value={newTodo.description}
                 onChange={(e) => setNewTodo({ ...newTodo, description: e.target.value })}
@@ -31,15 +33,17 @@ const TodoForm = ({ newTodo, setNewTodo, handleSaveTodo, isEditing }) => {
                 <option value="Completed">Completed</option>
             </select>
             <input
+                autoComplete="off"
                 type="text"
                 placeholder="Assignee (optional)"
                 value={newTodo.assignee}
                 onChange={(e) => setNewTodo({ ...newTodo, assignee: e.target.value })}
             />
-            <button onClick={handleSaveTodo}>
+            <button type="submit">
                 {isEditing ? "Save Todo" : "Add Todo"}
             </button>
-        </main>
+        </form>
+
     );
 };
 
